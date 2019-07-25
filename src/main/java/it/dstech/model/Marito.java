@@ -7,7 +7,7 @@ public class Marito {
 	private String password;
 	private int saldo;
 	
-	public int getId() {
+	public int getId() {	
 		return id;
 	}
 	public void setId(int id) {
