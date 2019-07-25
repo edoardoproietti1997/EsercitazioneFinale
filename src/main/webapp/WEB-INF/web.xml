@@ -1,0 +1,11 @@
+<web>
+	<servlet>
+		<servlet-name>registrazione</servlet-name>
+		<servlet-class>servlet.PrimaServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>registrazione</servlet-name>
+		<url-pattern>/registrazione</url-pattern>
+	</servlet-mapping>
+</web>
