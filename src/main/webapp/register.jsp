@@ -67,7 +67,7 @@ button:hover {
 </style>
 <body>
 
-	<form action="registrazione" style="border: 1px solid #ccc">
+	<form action="/registrazione" style="border: 1px solid #ccc">
 		<div class="container">
 			<h1>Registrazione</h1>
 			<p>Inserire i dati per la registrazione</p>
