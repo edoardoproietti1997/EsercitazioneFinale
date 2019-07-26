@@ -1,4 +1,4 @@
-package servlet;
+package it.dstech.servlets;
 
 import java.io.IOException;
 
@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import it.dstech.connection.ConnessioneDB;
 import it.dstech.model.Marito;
 
-public class PrimaServlet extends HttpServlet {
+public class RegistrazioneServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

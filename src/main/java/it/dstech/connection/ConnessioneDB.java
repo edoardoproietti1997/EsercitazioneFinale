@@ -30,7 +30,6 @@ public class ConnessioneDB {
 				return true;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 		}
 		return false;
 	}
@@ -44,7 +43,6 @@ public class ConnessioneDB {
 				return true;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 		}
 
 		return false;
@@ -60,7 +58,6 @@ public class ConnessioneDB {
 			result = prep.execute();
 
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
