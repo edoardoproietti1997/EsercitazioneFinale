@@ -6,7 +6,7 @@
 
 	<servlet>
 		<servlet-name>registrazione</servlet-name>
-		<servlet-class>servlet.PrimaServlet</servlet-class>
+		<servlet-class>it.dstech.servlets.RegistrazioneServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
