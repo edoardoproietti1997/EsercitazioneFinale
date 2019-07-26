@@ -67,7 +67,7 @@ button:hover {
 </style>
 <body>
 
-	<form action="inzio" style="border: 1px solid #ccc">
+	<form action="registrazione" style="border: 1px solid #ccc">
 		<div class="container">
 			<h1>Registrazione</h1>
 			<p>Inserire i dati per la registrazione</p>
@@ -78,7 +78,7 @@ button:hover {
 				for="psw"><b>Password</b></label> <input type="password"
 				placeholder="Enter Password" name="password" required>
 
-			<button type="submit" value="inserisci">Sign Up</button>
+			<button type="submit" value="registra">Sign Up</button>
 		</div>
 	</form>
 </body>
