@@ -15,14 +15,14 @@ public class ConnessioneDB {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(
-				"jdbc:mysql://localhost/world?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+				"jdbc:mysql://192.168.2.96/3306/",
 				"root", "dstech");
 		return conn;
 
 	}
 
 	public boolean controlloUsername(String username) {
-		String query = "SELECT marito.Username from migliamoglie.marito where username = '" + username + "';";
+		String query = "SELECT marito.Username from mogliemiglia.marito where username = '\"" + username + "\"';";
 		Statement state;
 		try {
 			state = connessionedb().createStatement();
@@ -35,8 +35,8 @@ public class ConnessioneDB {
 		return false;
 	}
 
-	public boolean controlloPassword(String username, String password) {
-		String query = "SELECT marito.Username from migliamoglie.marito where username = '" + username + "';";
+	public boolean controlloPassword(String password) {
+		String query = "SELECT marito.password from mogliemiglia.marito where username = '\"" + password + "\"';";
 		try {
 			Statement state = connessionedb().createStatement();
 			ResultSet result = state.executeQuery(query);
@@ -51,8 +51,8 @@ public class ConnessioneDB {
 	}
 
 	public boolean inserisciMarito(Marito marito) {
-		String query = "insert into migliamoglie.marito (username , password) values ('" + marito.getUsername() + "','"
-				+ marito.getPassword() + "');";
+		String query = "INSERT INTO `mogliemiglia`.`marito`(`username` , `password`, `saldo`)values ('" + marito.getUsername() + "','"
+				+ marito.getPassword() + "" + 0 + "');";
 		boolean result = false;
 		try {
 			PreparedStatement prep = connessionedb().prepareStatement(query);
