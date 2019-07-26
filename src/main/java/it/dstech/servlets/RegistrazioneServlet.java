@@ -19,23 +19,22 @@ public class RegistrazioneServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/register.jsp").forward(req, resp);
 
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		Marito marito = new Marito();
 		ConnessioneDB conn = new ConnessioneDB();
-		String parameter = req.getParameter("username");
-		
-		if (conn.controlloUsername(parameter)) {
-			marito.setUsername(req.getParameter("username"));
+		String user = req.getParameter("username");
+		String psw = req.getParameter("password");
+
+		if (conn.controlloUsername(user)) {
+			marito.setUsername(user);
+			marito.setPassword(psw);
+			conn.inserisciMarito(marito);
 		} else {
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		}
-		marito.setPassword(req.getParameter("password"));
-		boolean controllo = conn.inserisciMarito(marito);
-		if (!controllo) {
-			getServletContext().getRequestDispatcher("/error.jps").forward(req, resp);
-		}
-
 	}
 
 }
