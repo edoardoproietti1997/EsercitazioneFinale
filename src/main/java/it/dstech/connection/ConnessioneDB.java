@@ -15,7 +15,7 @@ public class ConnessioneDB {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(
-				"jdbc:mysql://192.168.2.96/3306/",
+				"jdbc:mysql://192.168.2.96:3306/mogliemiglia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 				"root", "dstech");
 		return conn;
 
@@ -36,7 +36,7 @@ public class ConnessioneDB {
 	}
 
 	public boolean controlloPassword(String password) {
-		String query = "SELECT marito.password from mogliemiglia.marito where username = '\"" + password + "\"';";
+		String query = "SELECT marito.password from mogliemiglia.marito where password = '\"" + password + "\"';";
 		try {
 			Statement state = connessionedb().createStatement();
 			ResultSet result = state.executeQuery(query);

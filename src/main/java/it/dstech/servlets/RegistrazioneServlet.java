@@ -24,15 +24,15 @@ public class RegistrazioneServlet extends HttpServlet {
 		Marito marito = new Marito();
 		ConnessioneDB conn = new ConnessioneDB();
 		String parameter = req.getParameter("Username");
-		if (conn.controlloUsername(parameter) == false) {
+		
+		if (conn.controlloUsername(parameter)) {
 			marito.setUsername(req.getParameter("Username"));
 		} else {
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		}
 		marito.setPassword(req.getParameter("password"));
-		marito.setSaldo(0);
 		boolean controllo = conn.inserisciMarito(marito);
-		if (controllo != true) {
+		if (!controllo) {
 			getServletContext().getRequestDispatcher("/error.jps").forward(req, resp);
 		}
 
