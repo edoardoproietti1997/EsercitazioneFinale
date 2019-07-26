@@ -23,10 +23,10 @@ public class RegistrazioneServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Marito marito = new Marito();
 		ConnessioneDB conn = new ConnessioneDB();
-		String parameter = req.getParameter("Username");
+		String parameter = req.getParameter("username");
 		
 		if (conn.controlloUsername(parameter)) {
-			marito.setUsername(req.getParameter("Username"));
+			marito.setUsername(req.getParameter("username"));
 		} else {
 			getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
 		}
