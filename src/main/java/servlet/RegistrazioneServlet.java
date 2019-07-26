@@ -1,4 +1,4 @@
-package it.dstech.servlets;
+package servlet;
 
 import java.io.IOException;
 
@@ -10,15 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import it.dstech.connection.ConnessioneDB;
 import it.dstech.model.Marito;
 
-public class RegistrazioneServlet extends HttpServlet {
+public class PrimaServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/register.jsp").forward(req, resp);
-
-	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Marito marito = new Marito();
