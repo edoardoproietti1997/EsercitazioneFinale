@@ -63,5 +63,15 @@ public class ConnessioneDB {
 		}
 		return result;
 	}
+	
+	public int prendiPunti (String username) throws ClassNotFoundException, SQLException 
+	{
+		int saldo = 0;
+		String query = "SELECT saldo from mogliemiglia.marito where username = '"+username+"';";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		saldo = prep.executeQuery().getInt(1);
+		return saldo;
+	}
+	
 
 }
