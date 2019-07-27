@@ -75,6 +75,7 @@ public class ConnessioneDB {
 		return saldo;
 	}
 	
+<<<<<<< HEAD
 	
 	public boolean controlloLogin(String username, String password) throws SQLException, ClassNotFoundException {
 		String query = "Select marito.username, marito.password from migliamoglie.marito where marito.username = '?' marito.password = '?'";
@@ -102,4 +103,15 @@ public class ConnessioneDB {
 
 	
 
+=======
+	public int calcolaLivello (String username) throws ClassNotFoundException, SQLException
+	{
+		int livello;
+		String query = "SELECT count(username) FROM migliamoglie.marito where username = '"+username+"' ;";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		livello = prep.executeQuery().getInt(1);
+		livello = (livello/10)+1;
+		return livello;
+	}
+>>>>>>> branch 'Test' of https://github.com/edoardoproietti1997/EsercitazioneFinale.git
 }
