@@ -16,7 +16,7 @@ public class ConnessioneDB {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection(
 				"jdbc:mysql://192.168.2.96:3306/mogliemiglia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-				"root", "dstech");
+				"root", "root");
 		return conn;
 
 	}
@@ -75,5 +75,15 @@ public class ConnessioneDB {
 		PreparedStatement prep = connessionedb().prepareStatement(query);
 		saldo = prep.executeQuery().getInt(1);
 		return saldo;
+	}
+	
+	public int calcolaLivello (String username) throws ClassNotFoundException, SQLException
+	{
+		int livello;
+		String query = "SELECT count(username) FROM migliamoglie.marito where username = '"+username+"' ;";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		livello = prep.executeQuery().getInt(1);
+		livello = (livello/10)+1;
+		return livello;
 	}
 }

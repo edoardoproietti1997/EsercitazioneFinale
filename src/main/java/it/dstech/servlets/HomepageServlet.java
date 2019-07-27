@@ -20,21 +20,27 @@ public class HomepageServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
+			//bisogna mettere una pagina collegata al bottone
+			String username = req.getParameter("username");
+			String vecchioSaldo = (String)(req.getAttribute("saldo"));
 			GestioneMoglieMiglia gmm = null;
 			ConnessioneDB conn = new ConnessioneDB();
+			int nuovosaldo = 0;
 			try
 			{
-				int saldo = conn.prendiPunti(req.getParameter("username"));
+				nuovosaldo = conn.prendiPunti(req.getParameter("username"));
 			}
 			catch (ClassNotFoundException | SQLException e)
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			req.setAttribute("punti", nuovosaldo);
 			try
 			{
 				gmm = new GestioneMoglieMiglia();
 			}
+			if (vecchioSaldo < nuovoSaldo)
 			catch (URISyntaxException e)
 			{
 				// TODO Auto-generated catch block
@@ -42,29 +48,34 @@ public class HomepageServlet extends HttpServlet
 			}
 			List<Attivita> aMarito = gmm.getListaAzioniMarito();
 			List<Attivita> aMoglie = gmm.getListaAzioniMoglie();
-			List<Attivita> realAMoglie = new ArrayList<Attivita>();
-			List<Attivita> realAMarito = new ArrayList<Attivita>();
-			//mi servira' un metodo che controlla il livello della persona che e' entrata
-			//sara tipo select count (id username) from db.tabellacontutteleoperazioni, in tal modo conteremo tutte le operazioni svolte
-			//la parte intera del risultato della query+1 ci dira' il livello dell'utente, questa andra' messa in un int livello
-			int livello = 1;//poi bisogna levare l'1 e mettere tipo metodo;
+			List<String> realAMoglie = new ArrayList<String>();
+			List<String> realAMarito = new ArrayList<String>();
+			int livello = 0;
+			try
+			{
+				livello = conn.calcolaLivello(username);
+			}
+			catch (ClassNotFoundException | SQLException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			for (Attivita attivita : aMoglie)
 			{
 				if(attivita.getLivello()<=livello)
 				{
-					realAMoglie.add(attivita);
+					
+					realAMoglie.add(attivita.getAzione());
 				}
 			}
 			for (Attivita attivita : aMarito)
 			{
 				if(attivita.getLivello()<=livello)
 				{
-					realAMarito.add(attivita);
+					realAMarito.add(attivita.getAzione());
 				}
 			}
 			req.setAttribute("moglie", realAMoglie);
 			req.setAttribute("marito", realAMarito);
-			
-		
 	}
 }

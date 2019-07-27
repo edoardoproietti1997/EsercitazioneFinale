@@ -7,23 +7,25 @@
 <!DOCTYPE html>
 <html>
 <body>
-
 	<h2>Home Page</h2>
 	<h3>benvenuto utente</h3>
-	<h3>ecco i tuoi punti ---> <%=request.getAttribute ("punti") %>></h3>
-	<%List<Attivita> moglie = (List<Attivita>) request.getAttribute("moglie"); %>
-	<%List<Attivita> marito = (List<Attivita>) request.getAttribute("marito"); %>
+	<h3>ecco i tuoi punti ---> <%=request.getAttribute("punti") %>></h3>
+	
+	<%List<String> moglie = (List<String>) request.getAttribute("moglie"); %>
+	<%List<String> marito = (List<String>) request.getAttribute("marito"); %>
 	<form action="/homepage" method="GET">
 	<h3>happy wife, happy life ! get your points doing:</h3>
-	<% for (Attivita attivita : moglie)%>
+	<% for (String attivita : moglie)%>
 	<%{ %>
-	<input type="radio" name="attivita" value="<%=attivita%>"> <%=attivita%><br>
+	<input type="radio" name="attivita'" value="<%=attivita%>"> <%=attivita%><br>
 	<%} %>
 	<h3>do it for yourself</h3>
-	<% for (Attivita attivita : marito)%>
+	<% for (String attivita : marito)%>
 	<%{ %>
-	<input type="radio" name="attivita" value="<%=attivita%>"> <%=attivita%><br>
+	<input type="radio" name="attivita'" value="<%=attivita%>"> <%=attivita%><br>
 	<%} %>
+	
+	
 	</form>
 	
 	<form action="/homepage" >
