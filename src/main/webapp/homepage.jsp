@@ -9,7 +9,7 @@
 <body>
 	<h2>Home Page</h2>
 	<h3>benvenuto utente</h3>
-	<h3>ecco i tuoi punti ---> <%=request.getAttribute("punti") %>></h3>
+	<h3>ecco i tuoi punti ---> <%=request.getAttribute("saldo") %>></h3>
 	
 	<%List<String> moglie = (List<String>) request.getAttribute("moglie"); %>
 	<%List<String> marito = (List<String>) request.getAttribute("marito"); %>

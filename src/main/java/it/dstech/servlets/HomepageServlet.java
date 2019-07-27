@@ -22,25 +22,27 @@ public class HomepageServlet extends HttpServlet
 	{
 			//bisogna mettere una pagina collegata al bottone
 			String username = req.getParameter("username");
-			String vecchioSaldo = (String)(req.getAttribute("saldo"));
+			int vecchioSaldo = (Integer.parseInt((String) (req.getAttribute("saldo"))));
 			GestioneMoglieMiglia gmm = null;
 			ConnessioneDB conn = new ConnessioneDB();
-			int nuovosaldo = 0;
+			int nuovoSaldo = 0;
 			try
 			{
-				nuovosaldo = conn.prendiPunti(req.getParameter("username"));
+				nuovoSaldo = conn.prendiPunti(req.getParameter("username"));
+				int differenza =vecchioSaldo-nuovoSaldo;
+				
+			
 			}
 			catch (ClassNotFoundException | SQLException e)
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			req.setAttribute("punti", nuovosaldo);
+			req.setAttribute("saldo", nuovoSaldo);
 			try
 			{
 				gmm = new GestioneMoglieMiglia();
 			}
-			if (vecchioSaldo < nuovoSaldo)
 			catch (URISyntaxException e)
 			{
 				// TODO Auto-generated catch block
