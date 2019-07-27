@@ -1,8 +1,5 @@
 package it.dstech.model;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class Marito {
 	
 	private int id;
@@ -10,7 +7,7 @@ public class Marito {
 	private String password;
 	private int saldo;
 	
-	public int getId() throws URISyntaxException, IOException {
+	public int getId(){
 		return id;
 	}
 	public void setId(int id) {
