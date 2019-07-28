@@ -5,8 +5,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.List"%>
 <%@page import="it.dstech.servlets.HomepageServlet"%>
-<%@page import="it.dstech.mogliemiglia.Attivita"%>
-<%@page import="it.dstech.mogliemiglia.GestioneMoglieMiglia"%>
+<%@page import="it.dstech.MoglieMiglia.Attivita"%>
+<%@page import="it.dstech.model.GestioneMoglieMiglia"%>
 <!DOCTYPE html>
 <html>
 <body>
