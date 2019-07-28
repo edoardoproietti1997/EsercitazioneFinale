@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.dstech.MoglieMiglia.Attivita;
 import it.dstech.connection.ConnessioneDB;
-import it.dstech.mogliemiglia.Attivita;
-import it.dstech.mogliemiglia.GestioneMoglieMiglia;
+import it.dstech.model.GestioneMoglieMiglia;
+
 
 public class HomepageServlet extends HttpServlet
 {
@@ -46,8 +47,9 @@ public class HomepageServlet extends HttpServlet
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			List<Attivita> aMarito = gmm.getListaAzioniMarito();
-			List<Attivita> aMoglie = gmm.getListaAzioniMoglie();
+		List<Attivita> attivitaMarito = gmm.getListaAzioniMarito();
+		List<Attivita> attivitaMoglie = gmm.getListaAzioniMoglie();
+		
 			List<String> realAMoglie = new ArrayList<String>();
 			List<String> realAMarito = new ArrayList<String>();
 			int livello = 0;
@@ -60,14 +62,14 @@ public class HomepageServlet extends HttpServlet
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			for (Attivita attivita : aMoglie)
+			for (Attivita attivita : attivitaMarito)
 			{
 				if(attivita.getLivello()<=livello)
 				{
 					realAMoglie.add(attivita.getAzione());
 				}
 			}
-			for (Attivita attivita : aMarito)
+			for (Attivita attivita : attivitaMarito)
 			{
 				if(attivita.getLivello()<=livello)
 				{
@@ -79,14 +81,14 @@ public class HomepageServlet extends HttpServlet
 
 			String azione = req.getParameter("devo decidere che nome assegnare al button e qui riprende l'azione scelta dall'utente");
 			int puntiAzione =0;
-			for (Attivita attivita : aMoglie)
+			for (Attivita attivita : attivitaMoglie)
 			{
 				if (azione.equals(attivita.getAzione()))
 				{
 					puntiAzione = attivita.getPunteggio();
 				}
 			}
-			for (Attivita attivita : aMarito)
+			for (Attivita attivita : attivitaMoglie)
 			{
 				if (azione.equals(attivita.getAzione()))
 				{
@@ -129,8 +131,3 @@ public class HomepageServlet extends HttpServlet
 			}
 	}
 }
-//String saldo = req.getParameter("saldo");
-//int vecchioSaldo = (Integer.parseInt(saldo));
-//int differenza;
-//
-// questa parte andra' inserita dopo e servira' a controllare se l'utente ha perso o guadagnato punti '

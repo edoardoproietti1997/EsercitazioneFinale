@@ -14,20 +14,22 @@
 	<%List<String> moglie = (List<String>) request.getAttribute("moglie"); %>
 	<%List<String> marito = (List<String>) request.getAttribute("marito"); %>
 	<form action="/homepage" method="GET">
-	<h3>happy wife, happy life ! get your points doing:</h3>
-	<% for (String attivita : moglie)%>
-	<%{ %>
+	<p>happy wife, happy life ! get your points doing:</p>
+	<% for (String attivita : moglie) { %>
+	<input type = "radio" name ="attivita"><%=attivita%>
 	<%} %>
-	<h3>do it for yourself</h3>
-	<% for (String attivita : marito)%>
-	<%{ %>
+	<p>do it for yourself:</p>
+	<% for (String attivita : marito) { %>
+	<input type = "radio" name ="attivita"><%=attivita%>
 	<%} %>
-	
-	
+	<input type="submit" value="Submit">
 	</form>
 	
 	<form action="/homepage" >
 		<a href="login.jsp">esci</a>
+	</form>
+	<form action= method ="POST">
+	<input type = "guarda la tua bacheca" value ="guarda la tua bacheca"> 
 	</form>
 </body>
 </html>
