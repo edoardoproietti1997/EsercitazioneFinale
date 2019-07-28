@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import it.dstech.model.Marito;
 
@@ -51,11 +54,9 @@ public class ConnessioneDB {
 	}
 
 	public void inserisciMarito(Marito marito) {
-		String query = "INSERT INTO mogliemiglia.marito (idMarito, username, password, saldo) values (?, ?, ?, ?);";
+		String query = "INSERT INTO migliamoglie.marito (idMarito, username, password, saldo) values (?, ?, ?, ?);";
 		try {
 			PreparedStatement prep = connessionedb().prepareStatement(query);
-
-			prep.setInt(1, marito.getId());
 			prep.setString(2, marito.getUsername());
 			prep.setString(3, marito.getPassword());
 			prep.setInt(4, 0);
@@ -76,6 +77,21 @@ public class ConnessioneDB {
 		saldo = prep.executeQuery().getInt(1);
 		return saldo;
 	}
+
+	
+	public boolean controlloLogin(String username, String password) throws SQLException, ClassNotFoundException {
+		String query = "Select marito.username, marito.password from migliamoglie.marito where marito.username = '?' marito.password = '?'";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		prep.setString(1, username);
+		prep.setString(2, password);
+		ResultSet res = prep.executeQuery();
+		
+		if(res.next()) {
+			return true;
+		}
+		return false;
+	}
+	
 	
 	public int calcolaLivello (String username) throws ClassNotFoundException, SQLException
 	{
@@ -86,4 +102,39 @@ public class ConnessioneDB {
 		livello = (livello/10)+1;
 		return livello;
 	}
+	
+	public String prendiIdMarito (String username) throws ClassNotFoundException, SQLException
+	{
+		String query = "SELECT idmarito from mogliemiglia.marito where username = '"+username+"';";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		String id = prep.executeQuery().getString(1);
+		return id ;
+	}
+	
+	public void inserisciAzione(String id, String azione)
+	{
+		LocalDateTime calendar = LocalDateTime.now();
+		//String dataEOra = calendar.toString();
+		String query = "INSERT INTO migliamoglie.storico (distorico, idmarito, azione, data) values (?, ?, ?, ?);";
+		try {
+			PreparedStatement prep = connessionedb().prepareStatement(query);
+			prep.setString(2, id);
+			prep.setString(3, azione);
+			prep.setString(4, calendar.toString());
+			prep.executeUpdate();
+			prep.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void modificaSaldo (String username, int saldo) throws ClassNotFoundException, SQLException
+	{
+		String query = "UPDATE migliamoglie.marito SET saldo='"+saldo+"' WHERE username='"+username+"';";
+		PreparedStatement prep = connessionedb().prepareStatement(query);
+		prep.executeUpdate();
+		prep.close();
+	}
+
+
 }

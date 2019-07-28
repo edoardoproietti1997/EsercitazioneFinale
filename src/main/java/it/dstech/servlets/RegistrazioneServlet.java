@@ -28,7 +28,7 @@ public class RegistrazioneServlet extends HttpServlet {
 		String user = req.getParameter("username");
 		String psw = req.getParameter("password");
 
-		if (conn.controlloUsername(user)) {
+		if (conn.controlloUsername(user) == false) {
 			marito.setUsername(user);
 			marito.setPassword(psw);
 			conn.inserisciMarito(marito);

@@ -17,12 +17,10 @@
 	<h3>happy wife, happy life ! get your points doing:</h3>
 	<% for (String attivita : moglie)%>
 	<%{ %>
-	<input type="radio" name="attivita'" value="<%=attivita%>"> <%=attivita%><br>
 	<%} %>
 	<h3>do it for yourself</h3>
 	<% for (String attivita : marito)%>
 	<%{ %>
-	<input type="radio" name="attivita'" value="<%=attivita%>"> <%=attivita%><br>
 	<%} %>
 	
 	
