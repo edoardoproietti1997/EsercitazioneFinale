@@ -77,8 +77,9 @@ public class ConnessioneDB {
 		saldo = prep.executeQuery().getInt(1);
 		return saldo;
 	}
-
 	
+
+
 	public boolean controlloLogin(String username, String password) throws SQLException, ClassNotFoundException {
 		String query = "Select marito.username, marito.password from migliamoglie.marito where marito.username = '?' marito.password = '?'";
 		PreparedStatement prep = connessionedb().prepareStatement(query);
@@ -93,7 +94,7 @@ public class ConnessioneDB {
 	}
 	
 	
-	public int calcolaLivello (String username) throws ClassNotFoundException, SQLException
+public int calcolaLivello (String username) throws ClassNotFoundException, SQLException
 	{
 		int livello;
 		String query = "SELECT count(username) FROM migliamoglie.marito where username = '"+username+"' ;";
