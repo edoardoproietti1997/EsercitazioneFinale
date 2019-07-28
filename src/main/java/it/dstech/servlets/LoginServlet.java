@@ -21,8 +21,7 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ConnessioneDB conn = new ConnessioneDB();
 		String parameter= req.getParameter("username");
-		String parameter2 = req.getParameter("password;");
-		
+		String parameter2 = req.getParameter("password");
 		
 	}
 }

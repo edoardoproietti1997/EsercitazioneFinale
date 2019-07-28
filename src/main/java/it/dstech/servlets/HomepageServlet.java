@@ -21,10 +21,7 @@ public class HomepageServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		//la pagina homepage si deve aggiornare e reindirizzare ogni volta
-		//gli deve dire hai guadagnato o hai perso tot punti
-		//deve aggiungere al db nella parte relativa ai movimenti il movimento fatto
-			//bisogna mettere una pagina collegata al bottone vedi azioni svolte fin'ora (nella jsp)
+
 			String username = req.getParameter("username");
 			GestioneMoglieMiglia gmm = null;
 			ConnessioneDB conn = new ConnessioneDB();
@@ -79,28 +76,27 @@ public class HomepageServlet extends HttpServlet
 			}
 			req.setAttribute("moglie", realAMoglie);
 			req.setAttribute("marito", realAMarito);
-			//a questo punto gli ho passato le liste di azioni che puo' compiere in base al livello,
-			//l'utente ne scegliera' una e in base ad essa ora dobbiamo fare una query di insert sul db e una query di update per il saldo
+
 			String azione = req.getParameter("devo decidere che nome assegnare al button e qui riprende l'azione scelta dall'utente");
 			int puntiAzione =0;
 			for (Attivita attivita : aMoglie)
 			{
 				if (azione.equals(attivita.getAzione()))
 				{
-					puntiAzione = attivita.getLivello();
+					puntiAzione = attivita.getPunteggio();
 				}
 			}
 			for (Attivita attivita : aMarito)
 			{
 				if (azione.equals(attivita.getAzione()))
 				{
-					puntiAzione = attivita.getLivello();
+					puntiAzione = attivita.getPunteggio();
 				}
 			}
 			if (vecchioSaldo + puntiAzione < 0 )
 			{
-				out.println("<h3>spiacente, non hai abbastanza punti per compiere questa azione <h3>");
 				getServletContext().getRequestDispatcher("/homepage.jsp").forward(req, resp);
+				out.println("<h3>spiacente, non hai abbastanza punti per compiere questa azione <h3>");
 			}
 			else
 			{
