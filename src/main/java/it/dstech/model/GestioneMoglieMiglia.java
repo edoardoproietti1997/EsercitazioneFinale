@@ -8,37 +8,41 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.dstech.mogliemiglia.Attivita;
+import it.dstech.MoglieMiglia.Attivita;;
 
 public class GestioneMoglieMiglia {
 	private List<Attivita> wifeActivity;
 	private List<Attivita> husbandActivity;
 
-	public static void main (String [] args) throws URISyntaxException, IOException {
+	public static void main(String[] args) throws URISyntaxException, IOException {
 		GestioneMoglieMiglia g = new GestioneMoglieMiglia();
 		System.out.println(g.getListaAzioniMarito());
 	}
+
 	public GestioneMoglieMiglia() throws URISyntaxException, IOException {
 		wifeActivity = new ArrayList<Attivita>();
 		husbandActivity = new ArrayList<Attivita>();
-		//URI uri = getClass().getClassLoader().getResource("src/main/resources/rewards.csv").toURI();
-		//Path path = Paths.get(uri);
-		//Path path = Paths.get(getClass().getClassLoader().getResource("src/main/resources/rewards.csv").toURI());
-	
-		File f = new File("C:\\Users\\Acer\\eclipse-workspace2\\ProgettoFinale\\src\\main\\resources\\rewards.csv");
+		// URI uri =
+		// getClass().getClassLoader().getResource("src/main/resources/rewards.csv").toURI();
+		// Path path = Paths.get(uri);
+		// Path path =
+		// Paths.get(getClass().getClassLoader().getResource("src/main/resources/rewards.csv").toURI());
+
+		File f = new File("C:\\Users\\proio\\git\\EsercitazioneFinale\\src\\main\\resources\\rewards.csv");
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		List<Attivita> lista = new ArrayList<Attivita>();
 		String riga = br.readLine();
-		while(riga != null) {
+		while (riga != null) {
 			String[] splitted = riga.split(",");
-			Attivita toInsert = new Attivita(splitted[0].trim(), Integer.parseInt(splitted[1].trim()), Integer.parseInt(splitted[2].trim()));
+			Attivita toInsert = new Attivita(splitted[0].trim(), Integer.parseInt(splitted[1].trim()),
+					Integer.parseInt(splitted[2].trim()));
 			lista.add(toInsert);
 			riga = br.readLine();
 		}
 		br.close();
 		System.out.println(lista);
-		//new CsvToBeanBuilder(new FileReader(f)).withType(Attivita.class).build()
-		//		.parse();
+		// new CsvToBeanBuilder(new FileReader(f)).withType(Attivita.class).build()
+		// .parse();
 		for (Attivita attivita : lista) {
 			if (attivita.getPunteggio() > 0) {
 				wifeActivity.add(attivita);

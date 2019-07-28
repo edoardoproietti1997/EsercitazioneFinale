@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import it.dstech.model.Marito;
 
@@ -136,6 +134,7 @@ public int calcolaLivello (String username) throws ClassNotFoundException, SQLEx
 		prep.executeUpdate();
 		prep.close();
 	}
+	
 
 
 }
