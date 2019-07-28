@@ -79,7 +79,7 @@ public class HomepageServlet extends HttpServlet
 			req.setAttribute("moglie", realAMoglie);
 			req.setAttribute("marito", realAMarito);
 
-			String azione = req.getParameter("devo decidere che nome assegnare al button e qui riprende l'azione scelta dall'utente");
+			String azione = req.getParameter("attivita");
 			int puntiAzione =0;
 			for (Attivita attivita : attivitaMoglie)
 			{
