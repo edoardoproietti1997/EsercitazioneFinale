@@ -1,6 +1,6 @@
 package it.dstech.model;
 
-import it.dstech.MoglieMiglia.Attivita;;
+import it.dstech.mogliemiglia.Attivita;;
 
 public class Storico {
 
