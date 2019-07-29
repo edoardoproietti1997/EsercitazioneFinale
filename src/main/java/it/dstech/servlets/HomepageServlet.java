@@ -48,8 +48,13 @@ public class HomepageServlet extends HttpServlet
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 			List<Attivita> attivitaMarito = gmm.getListaAzioniMarito();
 			List<Attivita> attivitaMoglie = gmm.getListaAzioniMoglie();
+=======
+		List<Attivita> attivitaMarito = gmm.getListaAzioniMarito();
+		List<Attivita> attivitaMoglie = gmm.getListaAzioniMoglie();
+>>>>>>> branch 'Test' of https://github.com/edoardoproietti1997/EsercitazioneFinale.git
 		
 			List<String> realAMoglie = new ArrayList<String>();
 			List<String> realAMarito = new ArrayList<String>();
@@ -80,7 +85,7 @@ public class HomepageServlet extends HttpServlet
 			req.setAttribute("moglie", realAMoglie);
 			req.setAttribute("marito", realAMarito);
 
-			String azione = req.getParameter("devo decidere che nome assegnare al button e qui riprende l'azione scelta dall'utente");
+			String azione = req.getParameter("attivita");
 			int puntiAzione =0;
 			for (Attivita attivita : attivitaMoglie)
 			{
@@ -131,4 +136,4 @@ public class HomepageServlet extends HttpServlet
 				getServletContext().getRequestDispatcher("/homepage.jsp").forward(req, resp);
 			}
 	}
-}
+}
