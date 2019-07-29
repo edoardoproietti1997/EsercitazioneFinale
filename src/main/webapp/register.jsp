@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <style>
@@ -68,16 +70,20 @@ button:hover {
 	<form action="registrazione" style="border: 1px solid #ccc" method="POST">
 		<div class="container">
 			<h1>Registrazione</h1>
+			<%if (request.getAttribute("error")!=null) { %>
+			<%String error = (String)request.getAttribute("error") ;%>
+			<h2><%=error %></h2>
+			<%}%>
 			<p>Inserire i dati per la registrazione</p>
 			<hr>
 
-			<label for="username"><b>Username</b></label> <input type="text"
+			<label for="username"><b>Scegli il tuo username</b></label> <input type="text"
 				placeholder="Enter Username" name="username" required> <label
-				for="psw"><b>Password</b></label> <input type="password"
+				for="psw"><b>Scegli la tua Password</b></label> <input type="password"
 				placeholder="Enter Password" name="password" required>
-
 			<button type="submit" value="registra">Sign Up</button>
 		</div>
 	</form>
+	<a href="login.jsp">sei gia' registrato? Clicca qui</a>
 </body>
 </html>

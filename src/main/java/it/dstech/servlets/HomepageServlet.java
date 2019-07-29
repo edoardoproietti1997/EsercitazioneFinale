@@ -24,6 +24,7 @@ public class HomepageServlet extends HttpServlet
 	{
 
 			String username = req.getParameter("username");
+			System.out.println(username);
 			GestioneMoglieMiglia gmm = null;
 			ConnessioneDB conn = new ConnessioneDB();
 			int vecchioSaldo = 0;
@@ -47,8 +48,8 @@ public class HomepageServlet extends HttpServlet
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		List<Attivita> attivitaMarito = gmm.getListaAzioniMarito();
-		List<Attivita> attivitaMoglie = gmm.getListaAzioniMoglie();
+			List<Attivita> attivitaMarito = gmm.getListaAzioniMarito();
+			List<Attivita> attivitaMoglie = gmm.getListaAzioniMoglie();
 		
 			List<String> realAMoglie = new ArrayList<String>();
 			List<String> realAMarito = new ArrayList<String>();

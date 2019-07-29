@@ -1,19 +1,25 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@page import="java.util.List"%>
 	<%@page import="it.dstech.servlets.HomepageServlet"%>
-	<%@page import= "it.dstech.mogliemiglia.Attivita"%>
-	<%@page import= "it.dstech.mogliemiglia.GestioneMoglieMiglia"%>
+	<%@page import= "it.dstech.MoglieMiglia.Attivita"%>
+	<%@page import= "it.dstech.model.GestioneMoglieMiglia"%>
+	<%@page import= "java.util.ArrayList;"%>
 <!DOCTYPE html>
 <html>
 <body>
+	<%String username = (String)request.getAttribute("username"); %>
 	<h2>Home Page</h2>
-	<h3>benvenuto utente</h3>
+	<h3>benvenuto <%=username%></h3>
 	<h3>ecco i tuoi punti ---> <%=request.getAttribute("saldo") %>></h3>
+	<%List<String> moglie = new ArrayList<String>();%>
+	<%moglie.addAll((List<String>) request.getAttribute("moglie")); %>
+	<%List<String> marito = new ArrayList<String>();%>
+	<%marito.addAll((List<String>) request.getAttribute("marito")); %>
 	
-	<%List<String> moglie = (List<String>) request.getAttribute("moglie"); %>
-	<%List<String> marito = (List<String>) request.getAttribute("marito"); %>
 	<form action="/homepage" method="GET">
+	
 	<p>happy wife, happy life ! get your points doing:</p>
 	<% for (String attivita : moglie) { %>
 	<input type = "radio" name ="attivita"><%=attivita%>
@@ -26,10 +32,10 @@
 	</form>
 	
 	<form action="/homepage" >
+	</form>
+	<form action= method = "POST">
+	<input type = "submit" value ="guarda la tua bacheca"> 
+	</form>
 		<a href="login.jsp">esci</a>
-	</form>
-	<form action= method ="POST">
-	<input type = "guarda la tua bacheca" value ="guarda la tua bacheca"> 
-	</form>
 </body>
 </html>
