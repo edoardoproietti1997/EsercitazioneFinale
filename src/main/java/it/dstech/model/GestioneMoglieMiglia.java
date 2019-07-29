@@ -22,18 +22,16 @@ public class GestioneMoglieMiglia {
 	public GestioneMoglieMiglia() throws URISyntaxException, IOException {
 		wifeActivity = new ArrayList<Attivita>();
 		husbandActivity = new ArrayList<Attivita>();
-<<<<<<< HEAD
+
 		// URI uri =
 		// getClass().getClassLoader().getResource("src/main/resources/rewards.csv").toURI();
 		// Path path = Paths.get(uri);
 		// Path path =
 		// Paths.get(getClass().getClassLoader().getResource("src/main/resources/rewards.csv").toURI());
 
-		File f = new File("C:\\Users\\proio\\git\\EsercitazioneFinale\\src\\main\\resources\\rewards.csv");
-=======
+
 		
 		File f = new File("C:\\Users\\proio\\git\\EsercitazioneFinale\\src\\main\\resources\\rewards.txt");
->>>>>>> branch 'Test' of https://github.com/edoardoproietti1997/EsercitazioneFinale.git
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		List<Attivita> lista = new ArrayList<Attivita>();
 		String riga = br.readLine();

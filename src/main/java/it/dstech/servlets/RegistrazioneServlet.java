@@ -17,8 +17,8 @@ public class RegistrazioneServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String errore = " ";
-		req.setAttribute("error", errore);
+		String errore = null;
+		req.setAttribute("errore", errore);
 		getServletContext().getRequestDispatcher("/register.jsp").forward(req, resp);
 
 	}
@@ -28,22 +28,23 @@ public class RegistrazioneServlet extends HttpServlet {
 		Marito marito = new Marito();
 		PrintWriter out = resp.getWriter();
 		ConnessioneDB conn = new ConnessioneDB();
-		String user = req.getParameter("username");
-		String psw = req.getParameter("password");
-		String errore = " ";
-		req.setAttribute("error", errore);
+		String user = (String) req.getAttribute("username");
+		String psw = (String) req.getAttribute("password");
+		String errore = null;
+		req.setAttribute("errore", errore);
 		if (conn.controlloUsername(user) == false) {
 			marito.setUsername(user);
 			marito.setPassword(psw);
 			conn.inserisciMarito(marito);
-			getServletContext().getRequestDispatcher("/homepage.jsp").forward(req, resp);
+			errore = "registrazione andata a buon fine, prego accedi";
+			req.setAttribute("errore", errore);
+			getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
 		}
 		else
 		{
 			errore = "username gia' esistente, per favore scegline un'altro";
-			req.setAttribute("error", errore);
+			req.setAttribute("errore", errore);
 			getServletContext().getRequestDispatcher("/register.jsp").forward(req, resp);
-			req.setAttribute("username", user);
 		}
 	}
 

@@ -70,8 +70,8 @@ button:hover {
 	<form action="registrazione" style="border: 1px solid #ccc" method="POST">
 		<div class="container">
 			<h1>Registrazione</h1>
-			<%if (request.getAttribute("error")!=null) { %>
-			<%String error = (String)request.getAttribute("error") ;%>
+			<%if (request.getAttribute("errore")!=null) { %>
+			<%String error = (String)request.getAttribute("errore") ;%>
 			<h2><%=error %></h2>
 			<%}%>
 			<p>Inserire i dati per la registrazione</p>
