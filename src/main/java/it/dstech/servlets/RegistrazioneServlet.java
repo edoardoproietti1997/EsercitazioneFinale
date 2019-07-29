@@ -25,8 +25,8 @@ public class RegistrazioneServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Marito marito = new Marito();
 		ConnessioneDB conn = new ConnessioneDB();
-		String user = (String) req.getAttribute("username");
-		String psw = (String) req.getAttribute("password");
+		String user =  req.getParameter("username");
+		String psw =  req.getParameter("password");
 		String errore = null;
 		if (conn.controlloUsername(user) == false) {
 			marito.setUsername(user);
