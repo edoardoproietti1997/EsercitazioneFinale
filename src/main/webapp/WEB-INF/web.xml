@@ -33,4 +33,14 @@
 		<servlet-name>homepage</servlet-name>
 		<url-pattern>/homepage</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>bacheca</servlet-name>
+		<servlet-class>it.dstech.servlets.HomepageServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>bacheca</servlet-name>
+		<url-pattern>/bacheca</url-pattern>
+	</servlet-mapping>
 </web-app>

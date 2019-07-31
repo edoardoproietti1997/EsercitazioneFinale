@@ -12,16 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.dstech.model.Marito;
+import it.dstech.mogliemiglia.Attivita;
 import it.dstech.mogliemiglia.GestioneMoglieMiglia;
+
 
 public class ConnessioneDB {
 
 	public Connection connessionedb() throws SQLException, ClassNotFoundException {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn = DriverManager.getConnection(
-				"jdbc:mysql://192.168.2.96:3306/mogliemiglia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-				"root", "dstech");
+//		Connection conn = DriverManager.getConnection(
+//				"jdbc:mysql://192.168.2.96:3306/mogliemiglia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+//				"root", "dstech");
+		Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/world?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root" , "root");
 		return conn;
 
 	}
@@ -131,12 +134,12 @@ public class ConnessioneDB {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		List<Attivita> azioniMoglie = gmm.getListaAzioniMoglie();
 		while (result.next())
 		{
-			for (int i =0; i<gmm.getListaAzioniMoglie().size() ; i++)
+			for (Attivita attivita : azioniMoglie)
 			{
-				if (result.getString(1).equals(gmm.getListaAzioniMoglie().get(i)))
+				if (result.getString(1).equals(attivita.getAzione()))
 				{
 					livello++;
 				}
@@ -150,7 +153,11 @@ public class ConnessioneDB {
 	{
 		String query = "SELECT idmarito from mogliemiglia.marito where username = '"+username+"';";
 		PreparedStatement prep = connessionedb().prepareStatement(query);
-		int id = prep.executeQuery().getInt(1);
+		ResultSet result = prep.executeQuery(query);
+		int id = 0;
+		while (result.next()) {
+			id = result.getInt(1);
+		}
 		return id ;
 	}
 	

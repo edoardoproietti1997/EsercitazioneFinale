@@ -7,12 +7,20 @@
 	<%@page import= "it.dstech.mogliemiglia.GestioneMoglieMiglia"%>
 	<%@page import= "java.util.ArrayList"%>
 	<%@page import= "it.dstech.connection.ConnessioneDB" %>		
-		
-	<%{String marito = request.getParameter("username");
+	<html>
+	<body>
+	<%String username = (String)request.getAttribute("username");
 	ConnessioneDB conn = new ConnessioneDB();
-	int idUser = conn.prendiIdMarito(marito);
-	List<String> moglie =  conn.trovaAzioneStorico(idUser); 
-	for (int i = 0 ; i<moglie.size() ; i++){%>
-	<%=moglie.get(i) %>
-	<%} }%>
-<a href="homepage.jsp">torna alla home</a>
+	int idUser = conn.prendiIdMarito(username);
+	List<String> moglie =  conn.trovaAzioneStorico(idUser); %>
+	<ul type = "square">
+	<%for (int i = 0 ; i<moglie.size() ; i++){%>
+	<li><%=moglie.get(i)%></li>
+	<%}%>
+	</ul>
+	<form action="homepage" method ="GET" >
+	<input type = "hidden" id = "username" name = "username" value = "<%=username%>"> 
+	<input type = "submit" value ="torna alla home"> 
+	</form>
+	</body>
+	</html>
