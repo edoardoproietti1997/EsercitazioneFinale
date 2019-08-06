@@ -24,7 +24,7 @@ public class ConnessioneDB {
 //		Connection conn = DriverManager.getConnection(
 //				"jdbc:mysql://192.168.2.96:3306/mogliemiglia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 //				"root", "dstech");
-		Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/world?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root" , "root");
+		Connection conn =  DriverManager.getConnection("jdbc:mysql://localhost/mogliemiglia?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root" , "root");
 		return conn;
 
 	}

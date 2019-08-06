@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//perche' c'e' un doget che riporta a login e che nessuno chiama??
+		getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
 	}
 
 	@Override
